@@ -30,7 +30,7 @@ func (f *Reader) Read(p []byte) (int, error) {
 	n, err := f.r.Read(p)
 	// nothing is changed by mapping
 	if f.isSame(p[:n]) {
-		return 0, err
+		return n, err
 	}
 	// since there are differences, map them out
 	data := bytes.Map(f.mapping, p[:n])
