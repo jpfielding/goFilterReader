@@ -24,7 +24,7 @@ func TestBadXml(t *testing.T) {
 func TestGoodXml(t *testing.T) {
 	doc := []byte("<?xml version=\"1.0\"?>\x0b<doc/>")
 
-	filtered := xml.NewDecoder(NewReader(bytes.NewReader(doc), XML10Filter))
+	filtered := xml.NewDecoder(NewReader(bytes.NewReader(doc), XML10Filter(DropChar)))
 	var err error
 
 	for err == nil {

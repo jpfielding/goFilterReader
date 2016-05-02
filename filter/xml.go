@@ -14,10 +14,18 @@ var XML10Charset = func(r rune) (inrange bool) {
 		r >= 0x10000 && r <= 0x10FFFF
 }
 
+// SpaceChar is a code for a simple space
+var SpaceChar rune = 0x20
+
+// DropChar is simple negative value to indicate removing a char from a RuneMap
+var DropChar rune = -1
+
 // XML10Filter drops runes outside of the XML 1.0 charset
-var XML10Filter = func(r rune) rune {
-	if !XML10Charset(r) {
-		return -1
+func XML10Filter(replacement rune) RuneMap {
+	return func(r rune) rune {
+		if !XML10Charset(r) {
+			return replacement
+		}
+		return r
 	}
-	return r
 }
