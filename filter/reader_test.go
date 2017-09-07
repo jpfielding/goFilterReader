@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	testutils "github.com/jpfielding/goTest/testutils"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestFilter(t *testing.T) {
@@ -21,8 +21,8 @@ func TestFilter(t *testing.T) {
 	}
 
 	unfiltered, _ := ioutil.ReadAll(bytes.NewReader(doc))
-	testutils.Equals(t, string(doc), string(unfiltered))
+	assert.Equal(t, string(doc), string(unfiltered))
 
 	filtered, _ := ioutil.ReadAll(NewReader(bytes.NewReader(doc), filter))
-	testutils.Equals(t, "<xml><doc>candogfrog</doc></xml>", string(filtered))
+	assert.Equal(t, "<xml><doc>candogfrog</doc></xml>", string(filtered))
 }

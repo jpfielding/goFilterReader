@@ -6,7 +6,7 @@ import (
 	"io"
 	"testing"
 
-	testutils "github.com/jpfielding/goTest/testutils"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBadXml(t *testing.T) {
@@ -18,7 +18,7 @@ func TestBadXml(t *testing.T) {
 	for err == nil {
 		_, err = unfiltered.Token()
 	}
-	testutils.NotOk(t, err)
+	assert.NotNil(t, err)
 }
 
 func TestGoodXml(t *testing.T) {
@@ -33,7 +33,7 @@ func TestGoodXml(t *testing.T) {
 	switch err {
 	case io.EOF:
 	default:
-		testutils.Ok(t, err)
+		assert.Nil(t, err)
 
 	}
 }
