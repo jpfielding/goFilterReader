@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	testutils "github.com/jpfielding/goTest/testutils"
+	testutils "github.com/jpfielding/gotest/testutils"
 )
 
 func TestFilter(t *testing.T) {

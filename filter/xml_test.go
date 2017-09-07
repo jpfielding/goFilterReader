@@ -6,7 +6,7 @@ import (
 	"io"
 	"testing"
 
-	testutils "github.com/jpfielding/goTest/testutils"
+	testutils "github.com/jpfielding/gotest/testutils"
 )
 
 func TestBadXml(t *testing.T) {
